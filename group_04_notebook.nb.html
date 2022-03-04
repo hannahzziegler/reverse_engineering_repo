@@ -1800,28 +1800,12 @@ library(tidyverse)
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBXcml0ZSB0aGUgY29kZSB0byBsb2FkIHRoZSBDU1YgZmlsZSBoZXJlXG5cbmFsbF9wYXlvdXRzX2RlY2FkZSA8LSByZWFkX2NzdignZGF0YS8xMF95ZWFyX3BheW91dHMuY3N2Jywgc2tpcD0yLCBjb2xfbmFtZXMgPWMoXCJmaXNjYWxfeWVhclwiLCBcImNhc2VfbmFtZVwiLCBcImNsYWltX2Nhc2VfbnVtYmVyXCIsIFwiYW1vdW50XCIsIFwiZGVwYXJ0bWVudFwiLCBcImNhc2VfdHlwZVwiKSlcbmBgYCJ9 -->
-<pre class="r"><code># Write the code to load the CSV file here
-
-all_payouts_decade &lt;- read_csv(&#39;data/10_year_payouts.csv&#39;, skip=2, col_names =c(&quot;fiscal_year&quot;, &quot;case_name&quot;, &quot;claim_case_number&quot;, &quot;amount&quot;, &quot;department&quot;, &quot;case_type&quot;))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMjAxN19wYXlvdXRzIDwtIGFsbF9wYXlvdXRzX2RlY2FkZSAlPiVcblxuYGBgIn0= -->
+<pre class="r"><code>2017_payouts &lt;- all_payouts_decade %&gt;%
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTg3MDMgQ29sdW1uczogNuKUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmNociAoNSk6IGNhc2VfbmFtZSwgY2xhaW1fY2FzZV9udW1iZXIsIGFtb3VudCwgZGVwYXJ0bWVudCwgY2FzZV90eXBlXG5kYmwgKDEpOiBmaXNjYWxfeWVhclxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 18703 Columns: 6── Column specification ────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (5): case_name, claim_case_number, amount, department, case_type
-dbl (1): fiscal_year
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG90YWxfeWVhcmx5X3BheW91dHMgPC0gcmVhZF9jc3YoJ2RhdGEvdG90YWxfeWVhcmx5X3BheW91dHMuY3N2JylcbmBgYCJ9 -->
-<pre class="r"><code>total_yearly_payouts &lt;- read_csv(&#39;data/total_yearly_payouts.csv&#39;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTUgQ29sdW1uczogMuKUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmNociAoMik6IEZJU0NBTCBZRUFSLCBUT1RBTFxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 15 Columns: 2── Column specification ────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (2): FISCAL YEAR, TOTAL
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgaW5wdXQgaW4gXCIyMDE3X1wiXG4ifQ== -->
+<pre><code>Error: unexpected input in &quot;2017_&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1829,18 +1813,18 @@ chr (2): FISCAL YEAR, TOTAL
 <p><strong>Task</strong> Write the code to add a <code>migration_type</code> column to the data and give it the value of “international”</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBXcml0ZSB0aGUgY29kZSB0byBhZGQgdGhlIGNvbHVtbiBoZXJlXG5cbmludGVybmF0aW9uYWxfbWlncmF0aW9uICU+JVxuICBtdXRhdGUobWlncmF0aW9uX3R5cGUgPSBcImludGVybmF0aW9uYWxcIilcblxuYGBgIn0= -->
-<pre class="r"><code># Write the code to add the column here
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBXcml0ZSB0aGUgY29kZSB0byBjcmVhdGUgYSBkYXRhZnJhbWUgb2Ygb25seSB0aGUgcGF5b3V0cyBmcm9tIHRoZSB5ZWFyIDIwMTdcblxucGF5b3V0c18yMDE3IDwtIGFsbF9wYXlvdXRzX2RlY2FkZSAlPiVcbiAgZmlsdGVyKGZpc2NhbF95ZWFyID09IFwiMjAxN1wiKVxuXG5gYGAifQ== -->
+<pre class="r"><code># Write the code to create a dataframe of only the payouts from the year 2017
 
-international_migration %&gt;%
-  mutate(migration_type = &quot;international&quot;)
+payouts_2017 &lt;- all_payouts_decade %&gt;%
+  filter(fiscal_year == &quot;2017&quot;)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiR3JvdXAgMDQgTm90ZWJvb2siCm91dHB1dDogaHRtbF9ub3RlYm9vawphdXRob3JzOiBIYW5uYWggWmllZ2xlciwgVGluYXNoZSBDaGluZ2FyYW5kZSwgQW5kcsOpcyBSb2EKLS0tCgojIyNNSUxFU1RPTkUgMDIjIyMKCkNob3NlbiBwYXJhZ3JhcGg6CgrigJxCZXlvbmQgdGhlIG1hbW1vdGggY2FzZXMsIGEgcGlsZXVwIG9mIG90aGVyIGxhcmdlIHBheW91dHMgaGFzIHBhZGRlZCB0aGUgdGFiLCBhIFRpbWVzIGFuYWx5c2lzIG9mIGNpdHkgcGF5b3V0cyBmb3VuZC4gCgpXaGlsZSB0aGUgIyN0b3RhbCBudW1iZXIgb2YgcGF5b3V0cyBoYXMgZGlwcGVkIG92ZXIgdGltZSMjLCAKCnRoZSAjI2F2ZXJhZ2UgYW1vdW50IGhhcyBpbmNyZWFzZWQuIyMKCkxhc3QgYnVkZ2V0IHllYXIsIHRoZSBjaXR5IHBhaWQgb3V0IDMwIHNldHRsZW1lbnRzIG9mICQxIG1pbGxpb24gb3IgbW9yZSDigJQgZml2ZSB0aW1lcyBhcyBtYW55IGFzIGEgZGVjYWRlIGJlZm9yZS7igJ0KCi0tCkluZGl2aWR1YWwgRGF0YSBQb2ludHMgdG8gSUQ6CgotIFBheW91dHMgZGF0YQotLQpUaGUgU3RlcHM6CgotIExvYWQgdGhlIGRhdGEKCi0gQ3JlYXRlIGEgZGF0YWZyYW1lIHRvIGRlYWwgb25seSB3aXRoIHRoZSAyMDE3IHBheW91dHMKLSBDcmVhdGUgYSBkYXRhZnJhbWUgdG8gZGVhbCBvbmx5IHdpdGggdGhlIDIwMDctMjAxNyBwYXlvdXRzCi0gRmluZCB0aGUgbnVtYmVyIG9mIHBheW91dHMgZnJvbSBlYWNoIHllYXIKICAtIFN1bSB0aGUgbnVtYmVyIChOT1QgVEhFIFRPVEFMLCBBTkRSRVMpIG9mIHBheW91dHMgcGVyIHllYXIKICAtIEZpbmQgdGhlIHBlcmNlbnQgY2hhbmdlIGZyb20gMjAwNyB0byAyMDE3CiAgCi0gRmluZCBhdmVyYWdlIGFtb3VudAogIC0gVXNlIHRoZSA8bWVhbj4gZnVuY3Rpb24gdG8gZmluZCB0aGF0IHRoZSBhdmVyYWdlIGhhcyBpbmNyZWFzZWQKICAKLSBGaW5kIHRoZSA+PSAkMSBtaWxsaW9uIHNldHRsZW1lbnRzICAgCiAgLSBGaWx0ZXIgdGhlIDIwMTcgcGF5b3V0cyBmb3Igc2V0dGxlbWVudHMgb3ZlciAkMSBtaWxsaW9uLCBzZWUgaG93IG1hbnkgdGhlcmUgYXJlCiAgLSBGaWx0ZXIgdGhlIDIwMDcgcGF5b3V0cyBmb3Igc2V0dGxlbWVudHMgb3ZlciAkMSBtaWxsaW9uLCBzZWUgaG93IG1hbnkgdGhlcmUgYXJlCiAgCgpgYGB7cn0KIyBUdXJuIG9mZiBzY2llbnRpZmljIG5vdGF0aW9uCm9wdGlvbnMoc2NpcGVuPTk5OSkKCiMgTG9hZCB0aGUgdGlkeXZlcnNlLgpsaWJyYXJ5KHRpZHl2ZXJzZSkKCmBgYAoKCmBgYHtyfQojIFdyaXRlIHRoZSBjb2RlIHRvIGxvYWQgdGhlIENTViBmaWxlIGhlcmUKCmFsbF9wYXlvdXRzX2RlY2FkZSA8LSByZWFkX2NzdignZGF0YS8xMF95ZWFyX3BheW91dHMuY3N2Jywgc2tpcD0yLCBjb2xfbmFtZXMgPWMoImZpc2NhbF95ZWFyIiwgImNhc2VfbmFtZSIsICJjbGFpbV9jYXNlX251bWJlciIsICJhbW91bnQiLCAiZGVwYXJ0bWVudCIsICJjYXNlX3R5cGUiKSkKCnRvdGFsX3llYXJseV9wYXlvdXRzIDwtIHJlYWRfY3N2KCdkYXRhL3RvdGFsX3llYXJseV9wYXlvdXRzLmNzdicpCgpgYGAKCkFkZCBhIGNvbHVtbiBmb3IgdGhlIHR5cGUgb2YgbWlncmF0aW9uICgiaW50ZXJuYXRpb25hbCIpIGFuZCBwb3B1bGF0ZSBpdDoKCioqVGFzayoqIFdyaXRlIHRoZSBjb2RlIHRvIGFkZCBhIGBtaWdyYXRpb25fdHlwZWAgY29sdW1uIHRvIHRoZSBkYXRhIGFuZCBnaXZlIGl0IHRoZSB2YWx1ZSBvZiAiaW50ZXJuYXRpb25hbCIKCmBgYHtyfQojIFdyaXRlIHRoZSBjb2RlIHRvIGFkZCB0aGUgY29sdW1uIGhlcmUKCmludGVybmF0aW9uYWxfbWlncmF0aW9uICU+JQogIG11dGF0ZShtaWdyYXRpb25fdHlwZSA9ICJpbnRlcm5hdGlvbmFsIikKCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiR3JvdXAgMDQgTm90ZWJvb2siCm91dHB1dDogaHRtbF9ub3RlYm9vawphdXRob3JzOiBIYW5uYWggWmllZ2xlciwgVGluYXNoZSBDaGluZ2FyYW5kZSwgQW5kcsOpcyBSb2EKLS0tCgojIyNNSUxFU1RPTkUgMDIjIyMKCkNob3NlbiBwYXJhZ3JhcGg6CgrigJxCZXlvbmQgdGhlIG1hbW1vdGggY2FzZXMsIGEgcGlsZXVwIG9mIG90aGVyIGxhcmdlIHBheW91dHMgaGFzIHBhZGRlZCB0aGUgdGFiLCBhIFRpbWVzIGFuYWx5c2lzIG9mIGNpdHkgcGF5b3V0cyBmb3VuZC4gCgpXaGlsZSB0aGUgIyN0b3RhbCBudW1iZXIgb2YgcGF5b3V0cyBoYXMgZGlwcGVkIG92ZXIgdGltZSMjLCAKCnRoZSAjI2F2ZXJhZ2UgYW1vdW50IGhhcyBpbmNyZWFzZWQuIyMKCkxhc3QgYnVkZ2V0IHllYXIsIHRoZSBjaXR5IHBhaWQgb3V0IDMwIHNldHRsZW1lbnRzIG9mICQxIG1pbGxpb24gb3IgbW9yZSDigJQgZml2ZSB0aW1lcyBhcyBtYW55IGFzIGEgZGVjYWRlIGJlZm9yZS7igJ0KCi0tCkluZGl2aWR1YWwgRGF0YSBQb2ludHMgdG8gSUQ6CgotIFBheW91dHMgZGF0YQotLQpUaGUgU3RlcHM6CgotIExvYWQgdGhlIGRhdGEKCi0gQ3JlYXRlIGEgZGF0YWZyYW1lIHRvIGRlYWwgb25seSB3aXRoIHRoZSAyMDE3IHBheW91dHMKLSBDcmVhdGUgYSBkYXRhZnJhbWUgdG8gZGVhbCBvbmx5IHdpdGggdGhlIDIwMDctMjAxNyBwYXlvdXRzCi0gRmluZCB0aGUgbnVtYmVyIG9mIHBheW91dHMgZnJvbSBlYWNoIHllYXIKICAtIFN1bSB0aGUgbnVtYmVyIChOT1QgVEhFIFRPVEFMLCBBTkRSRVMpIG9mIHBheW91dHMgcGVyIHllYXIKICAtIEZpbmQgdGhlIHBlcmNlbnQgY2hhbmdlIGZyb20gMjAwNyB0byAyMDE3CiAgCi0gRmluZCBhdmVyYWdlIGFtb3VudAogIC0gVXNlIHRoZSA8bWVhbj4gZnVuY3Rpb24gdG8gZmluZCB0aGF0IHRoZSBhdmVyYWdlIGhhcyBpbmNyZWFzZWQKICAKLSBGaW5kIHRoZSA+PSAkMSBtaWxsaW9uIHNldHRsZW1lbnRzICAgCiAgLSBGaWx0ZXIgdGhlIDIwMTcgcGF5b3V0cyBmb3Igc2V0dGxlbWVudHMgb3ZlciAkMSBtaWxsaW9uLCBzZWUgaG93IG1hbnkgdGhlcmUgYXJlCiAgLSBGaWx0ZXIgdGhlIDIwMDcgcGF5b3V0cyBmb3Igc2V0dGxlbWVudHMgb3ZlciAkMSBtaWxsaW9uLCBzZWUgaG93IG1hbnkgdGhlcmUgYXJlCiAgCgpgYGB7cn0KIyBUdXJuIG9mZiBzY2llbnRpZmljIG5vdGF0aW9uCm9wdGlvbnMoc2NpcGVuPTk5OSkKCiMgTG9hZCB0aGUgdGlkeXZlcnNlLgpsaWJyYXJ5KHRpZHl2ZXJzZSkKCmBgYAoKCmBgYHtyfQojIFdyaXRlIHRoZSBjb2RlIHRvIGxvYWQgdGhlIENTViBmaWxlIGhlcmUKCmFsbF9wYXlvdXRzX2RlY2FkZSA8LSByZWFkX2NzdignZGF0YS8xMF95ZWFyX3BheW91dHMuY3N2Jywgc2tpcD0yLCBjb2xfbmFtZXMgPWMoImZpc2NhbF95ZWFyIiwgImNhc2VfbmFtZSIsICJjbGFpbV9jYXNlX251bWJlciIsICJhbW91bnQiLCAiZGVwYXJ0bWVudCIsICJjYXNlX3R5cGUiKSkKCnRvdGFsX3llYXJseV9wYXlvdXRzIDwtIHJlYWRfY3N2KCdkYXRhL3RvdGFsX3llYXJseV9wYXlvdXRzLmNzdicpCgpgYGAKCkFkZCBhIGNvbHVtbiBmb3IgdGhlIHR5cGUgb2YgbWlncmF0aW9uICgiaW50ZXJuYXRpb25hbCIpIGFuZCBwb3B1bGF0ZSBpdDoKCioqVGFzayoqIFdyaXRlIHRoZSBjb2RlIHRvIGFkZCBhIGBtaWdyYXRpb25fdHlwZWAgY29sdW1uIHRvIHRoZSBkYXRhIGFuZCBnaXZlIGl0IHRoZSB2YWx1ZSBvZiAiaW50ZXJuYXRpb25hbCIKCmBgYHtyfQojIFdyaXRlIHRoZSBjb2RlIHRvIGNyZWF0ZSBhIGRhdGFmcmFtZSBvZiBvbmx5IHRoZSBwYXlvdXRzIGZyb20gdGhlIHllYXIgMjAxNwoKcGF5b3V0c18yMDE3IDwtIGFsbF9wYXlvdXRzX2RlY2FkZSAlPiUKICBmaWx0ZXIoZmlzY2FsX3llYXIgPT0gIjIwMTciKQoKYGBgCgo=</div>
 
 
 

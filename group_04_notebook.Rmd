@@ -63,10 +63,10 @@ Add a column for the type of migration ("international") and populate it:
 **Task** Write the code to add a `migration_type` column to the data and give it the value of "international"
 
 ```{r}
-# Write the code to add the column here
+# Write the code to create a dataframe of only the payouts from the year 2017
 
-international_migration %>%
-  mutate(migration_type = "international")
+payouts_2017 <- all_payouts_decade %>%
+  filter(fiscal_year == "2017")
 
 ```
 
