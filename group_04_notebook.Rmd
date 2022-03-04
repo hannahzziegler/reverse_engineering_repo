@@ -26,10 +26,10 @@ The Steps:
 - Load the data
 
 - Create a dataframe to deal only with the 2017 payouts
-- Create a dataframe to deal only with the 2007-2017 payouts
+- Create a dataframe to deal only with the 2006-2016 payouts
 - Find the number of payouts from each year
   - Sum the number (NOT THE TOTAL, ANDRES) of payouts per year
-  - Find the percent change from 2007 to 2017
+  - Find the percent change from 2006 to 2016
   
 - Find average amount
   - Use the <mean> function to find that the average has increased
@@ -70,3 +70,10 @@ payouts_2017 <- all_payouts_decade %>%
 
 ```
 
+```{r}
+# Write the code to create a dataframe of payouts from 2006-2016
+
+payouts_2017 <- all_payouts_decade %>%
+  filter(fiscal_year == "2017")
+
+```
