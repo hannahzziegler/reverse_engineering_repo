@@ -70,10 +70,32 @@ payouts_2017 <- all_payouts_decade %>%
 
 ```
 
+
+
 ```{r}
 # Write the code to create a dataframe of payouts from 2006-2016
 
 payouts_2017 <- all_payouts_decade %>%
   filter(fiscal_year == "2017")
+
+```
+
+
+
+```{r}
+# Sum the total number of payouts from 2006-2016
+
+```
+
+
+
+```{r}
+# Determine the percent change in payouts through the whole 10-year period
+
+```
+
+
+```{r}
+# Find the average amount of payouts from the decade 2006-2016
 
 ```
