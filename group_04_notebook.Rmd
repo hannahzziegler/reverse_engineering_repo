@@ -96,6 +96,15 @@ payouts_2006_2016 %>%
 ```{r}
 # Determine the percent change in payouts through the whole 10-year period (satisfies "while the total number of payouts has dipped over time")
 
+yearly_payout_count <- all_payouts_decade %>%
+  group_by(fiscal_year) %>%
+  summarise(count=n()) %>%
+  arrange(fiscal_year)
+  
+yearly_payout_count %>%
+  summarise(
+  total_payouts_10_years = sum(count)
+)
 ```
 
 
