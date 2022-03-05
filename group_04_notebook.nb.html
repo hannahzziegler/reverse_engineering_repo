@@ -1800,12 +1800,29 @@ library(tidyverse)
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMjAxN19wYXlvdXRzIDwtIGFsbF9wYXlvdXRzX2RlY2FkZSAlPiVcblxuYGBgIn0= -->
-<pre class="r"><code>2017_payouts &lt;- all_payouts_decade %&gt;%
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBXcml0ZSB0aGUgY29kZSB0byBsb2FkIHRoZSBDU1YgZmlsZSBoZXJlXG5cbmFsbF9wYXlvdXRzX2RlY2FkZSA8LSByZWFkX2NzdignZGF0YS9jbGVhbl8xMF95ZWFyX3BheW91dHMuY3N2Jywgc2tpcD0yLCBjb2xfbmFtZXMgPWMoXCJmaXNjYWxfeWVhclwiLCBcImNhc2VfbmFtZVwiLCBcImNsYWltX2Nhc2VfbnVtYmVyXCIsIFwiYW1vdW50XCIsIFwiZGVwYXJ0bWVudFwiLCBcImNhc2VfdHlwZVwiKSlcbmBgYCJ9 -->
+<pre class="r"><code># Write the code to load the CSV file here
+
+all_payouts_decade &lt;- read_csv(&#39;data/clean_10_year_payouts.csv&#39;, skip=2, col_names =c(&quot;fiscal_year&quot;, &quot;case_name&quot;, &quot;claim_case_number&quot;, &quot;amount&quot;, &quot;department&quot;, &quot;case_type&quot;))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgaW5wdXQgaW4gXCIyMDE3X1wiXG4ifQ== -->
-<pre><code>Error: unexpected input in &quot;2017_&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTg3MDMgQ29sdW1uczogNuKUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmNociAoNCk6IGNhc2VfbmFtZSwgY2xhaW1fY2FzZV9udW1iZXIsIGRlcGFydG1lbnQsIGNhc2VfdHlwZVxuZGJsICgyKTogZmlzY2FsX3llYXIsIGFtb3VudFxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
+<pre><code>Rows: 18703 Columns: 6── Column specification ───────────────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr (4): case_name, claim_case_number, department, case_type
+dbl (2): fiscal_year, amount
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG90YWxfeWVhcmx5X3BheW91dHMgPC0gcmVhZF9jc3YoJ2RhdGEvY2xlYW5lZF90b3RhbF95ZWFybHlfcGF5b3V0cy5jc3YnKVxuYGBgIn0= -->
+<pre class="r"><code>total_yearly_payouts &lt;- read_csv(&#39;data/cleaned_total_yearly_payouts.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTUgQ29sdW1uczogMuKUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmNociAoMSk6IEZJU0NBTCBZRUFSXG5kYmwgKDEpOiBUT1RBTFxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
+<pre><code>Rows: 15 Columns: 2── Column specification ───────────────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr (1): FISCAL YEAR
+dbl (1): TOTAL
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1822,12 +1839,11 @@ payouts_2017 &lt;- all_payouts_decade %&gt;%
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBXcml0ZSB0aGUgY29kZSB0byBjcmVhdGUgYSBkYXRhZnJhbWUgb2YgcGF5b3V0cyBmcm9tIDIwMDYtMjAxNiBcblxucGF5b3V0c18yMDA2XzIwMTYgPC0gYWxsX3BheW91dHNfZGVjYWRlICU+JVxuICBcbiAgZmlsdGVyKGZpc2NhbF95ZWFyIDwgXCIyMDE3XCIpXG5cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBXcml0ZSB0aGUgY29kZSB0byBjcmVhdGUgYSBkYXRhZnJhbWUgb2YgcGF5b3V0cyBmcm9tIDIwMDYtMjAxNiBcblxucGF5b3V0c18yMDA2XzIwMTYgPC0gYWxsX3BheW91dHNfZGVjYWRlICU+JVxuICBmaWx0ZXIoZmlzY2FsX3llYXIgPCBcIjIwMTdcIikgXG5cbmBgYCJ9 -->
 <pre class="r"><code># Write the code to create a dataframe of payouts from 2006-2016 
 
 payouts_2006_2016 &lt;- all_payouts_decade %&gt;%
-  
-  filter(fiscal_year &lt; &quot;2017&quot;)
+  filter(fiscal_year &lt; &quot;2017&quot;) 
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -1841,7 +1857,7 @@ payouts_2006_2016 %&gt;%
   summarise(
     count=n())</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVFRUTZDTUJCY0N0WFFSQ1h4SFpBWUw5NjhHQjlnTk9GYXNTb1JXd0lsZXZUbDRCWkxKRzNTN3U1MGRyclR3eTVkczVRQmdBOEJFUEFwcGtCUHgzMjhBUWdJRmg1ZWhDYStrYlRzQVlEWkwyNGpoMFFsZjRvYWsyZ01acXFSMm1HR2xYb2xBOXZJa1E4ZUhTNVhNaXQ0N1VxeUM5Yzh1VmJZajFYcnRFeFZxWE1sc1ltWWdhblQ3RlVPc0dpa21lUVNaL2RHUHVLVmVjQWFoYi9ac1hHenpaT2tzMUxVU2syRXZPVlNETE1YL0N3S1c4elJjVzg0S2FzYy84TTZRYlJPdE5KODRMRk1GUVBTZTRQMkM1V0ljUTZuQVFBQSJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVEwUXFDTUJTOVRsY29GRUxmb1NDOTlOWkw5QUZSNE90YVZwSnRvcE42N011MU85dElOdGp1dldmbm50Mnp3eTVmUjNrRUFENEVRTUNubUFJOUhmZkpCaUFnV0hoNEVlcjRSdEpxQkFBV3Y3aU5IUklWN0ZtMG1NUlRrTXRPS0ljWk52S1ZXcmFXSXg4OEJseXVKSzlZNjBwR0Y2WlllbTJ3SDZ2ZWFabkxXcFZTWUJQUkExT24yV3NjSU82RW51U1M4SHNuSGttVzZSZU1VL2k3blRyWFc3OUpCcU5GamRhc0VMZFNGSGI0aXAyTHloUkx0RHc2VHV1bXhBOHhWaEJ0VXlVVnM3eUl5OG9pb3pub3Z5NUVmSmVvQVFBQSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["count"],"name":[1],"type":["int"],"align":["right"]}],"data":[{"1":"16144"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
@@ -1855,20 +1871,64 @@ payouts_2006_2016 %&gt;%
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVF3WW9DTVF6TlZLdFlVQmY4RHVleUYwK2VsdjBBVWZDMmRHdlZ3ZGwwNkZUMDZGVi95di93NUNmc0Y2anAwSUswa0NaNXpVdnpNdnRhZm9xbEFJQVd0SUZCaTFNSWZESC9IazhBMm95U2pCNTYzaCtwYU5RQUFBUHZyL2YvNmUxY1g1SkNqdkpQMXhSOHZJR0RTbHVsMGYyb3JjU05UaWc5YXc1NXBQWEoySW11SjUyMHR5cGxuZllXSytsa3ZyYkVwK3lSVUxxbWNvVkJJakUvUFUvSW1VMkE0Ujc5Skt1eDJ1NXg1OWNBSXFpR01GMFc3QzMyWDdKbmFNVkRxNDdHVFlFNnpsN0tYMTNHZlpEaVJuQmUyUUpkVkVKb25UdmpaS3dUeXBRUmFiVEI0d1gxOVYzV3RBRUFBQT09In0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBEZXRlcm1pbmUgdGhlIHBlcmNlbnQgY2hhbmdlIGluIHBheW91dHMgdGhyb3VnaCB0aGUgd2hvbGUgMTAteWVhciBwZXJpb2QgKHNhdGlzZmllcyBcIndoaWxlIHRoZSB0b3RhbCBudW1iZXIgb2YgcGF5b3V0cyBoYXMgZGlwcGVkIG92ZXIgdGltZVwiKVxuXG55ZWFybHlfcGF5b3V0X2NvdW50IDwtIGFsbF9wYXlvdXRzX2RlY2FkZSAlPiVcbiAgZ3JvdXBfYnkoZmlzY2FsX3llYXIpICU+JVxuICBzdW1tYXJpc2UoY291bnQ9bigpKSAlPiVcbiAgYXJyYW5nZShmaXNjYWxfeWVhcilcbiAgXG55ZWFybHlfcGF5b3V0X2NvdW50ICU+JVxuICBzdW1tYXJpc2UoXG4gIHRvdGFsX3BheW91dHNfMTBfeWVhcnMgPSBzdW0oY291bnQpXG4pXG5gYGAifQ== -->
+<pre class="r"><code># Determine the percent change in payouts through the whole 10-year period (satisfies &quot;while the total number of payouts has dipped over time&quot;)
+
+yearly_payout_count &lt;- all_payouts_decade %&gt;%
+  group_by(fiscal_year) %&gt;%
+  summarise(count=n()) %&gt;%
+  arrange(fiscal_year)
+  
+yearly_payout_count %&gt;%
+  summarise(
+  total_payouts_10_years = sum(count)
+)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVFVV3ZDTUJDK1JyTmhRVmNZN0YrMFdIM3hCOGhncjhPQmJ5V3JtUlpqVXBLVTZkdCtlZXVsYTdBa2tOemRsL3Z1N3J2UDdYNGQ3Mk1BbU1BVUNFd291a0MvZHUvcEJtQktNSWp3WStic0ZaTmVld0JnL204L1hvSWtLdG1GRzNTU0VmaG1sV1dpcU5sTk5kWVUrYks0Y2FaTlFKMXA5WnQ1dXF0UC92RHA4SVE5U3NGTTJDTStNTXV5SDQxOGpOcUE4cXhxV3ltSkpPSVUwSUFjNlFCSUd1a21PYVRscVpIbk5GKzVEb04wZU1nZnI4SmQxNU4wUXkwNjFIcmk4bGhKN29jWDdKdUxJVmlnNUY1eFZ1dEtXaThGVVpQMU8vTklxWVJIZW5IUTNnRVVIblZPdVFFQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["total_payouts_10_years"],"name":[1],"type":["int"],"align":["right"]}],"data":[{"1":"18703"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG55ZWFybHlfcGF5b3V0X2NvdW50ICU+JVxuICBzdW1tYXJpc2UoXG4gIHBlcmNlbnRfY2hhbmdlID0gKCgxMzY5LTE0NjgpLzE4NzAzKSoxMDBcbilcbmBgYCJ9 -->
+<pre class="r"><code>
+yearly_payout_count %&gt;%
+  summarise(
+  percent_change = ((1369-1468)/18703)*100
+)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVF3V3JETUF4VjNMcWpnWVhBdmlPQnRaZWRkaXI5Z0xGQ2I4TjEzRFkwbFlQanNoMTc3WDZxLzdIVFBtRmYwRTRPTmdRYlpFblBlcEtlM3hicmVicE9BV0FFWTJBdzRoUUNYNzB2aXhlQU1hTWtvWWVwODE5VTlOUURBSm56MTkrLzE1OUw5eDBWY2hSSDFWR1FEOENzVlVZcXRCOXlMM0NuSXNyVTZNOHkwQjdKMkptdU81MjR0MnhFRi9kT0syRkZ1VFhFcCt3V1VSNTBhMnVOUkdKdWV4NlJFeE1CK1FuZEpsVWg5eWM4Rk04ek44SExCcjllNG0wUXU1bnM3bnR4MzJ1aWNGZWpDc3MzWXFPYThDRWt1VmRjdHFaR0c2UVEycFZXV3hIcVVxbWJnUFRpNFBZUDNwRmF0TFVCQUFBPSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["percent_change"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"-0.5293268"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
   </script>
 </div>
 <!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
+<pre class="r"><code>NA</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBGaW5kIHRoZSBhdmVyYWdlIGFtb3VudCBvZiBwYXlvdXRzIGZyb20gdGhlIGRlY2FkZSAyMDA2LTIwMTYgKHNhdGlzZmllcyBcInRoZSBhdmVyYWdlIGFtb3VudCBoYXMgaW5jcmVhc2VkXCIpXG5cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBGaW5kIHRoZSBhdmVyYWdlIGFtb3VudCBvZiBwYXlvdXRzIGZyb20gdGhlIGRlY2FkZSAyMDA2LTIwMTYgKHNhdGlzZmllcyBcInRoZSBhdmVyYWdlIGFtb3VudCBoYXMgaW5jcmVhc2VkXCIpXG5cbnBheW91dHNfMjAwNl8yMDE2ICU+JVxuICBzdW1tYXJpc2UoXG4gICAgbWVhbl9wYXlvdXRfYW1vdW50ID0gbWVhbihhbW91bnQpXG4gIClcbmBgYCJ9 -->
 <pre class="r"><code># Find the average amount of payouts from the decade 2006-2016 (satisfies &quot;the average amount has increased&quot;)
-</code></pre>
+
+payouts_2006_2016 %&gt;%
+  summarise(
+    mean_payout_amount = mean(amount)
+  )</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVF3VzdDTUF4MUEyR2lFZ2lONzJnbEJBZU9IQkFmTURHdE4rUzFBU3JhcEdwVE1XNGMrS2Q5eVA1Z3AzMUZtVk9sVXBWSWp1MFhQOXN2Yjl0bzZVYytBQXhnQ0F3R25FTGc3L3Rkc0FZWU1rbzhlaGdiLzBWRjh4WUFtQnEvK2YzNE8vNDh2cDFDTGpFWEZRV3pIdmlhQzVTSEFtK3ExZ2ZNVlMyMVF4dVg2aHAyMUFrWnU5UDFwT1AyanpPczNQNStnaHJEWTBsOHlocUg4cUlLblNwSkpHWVVjSWZzbFE0d3E2WFpKQW5pY3kwdndXSmxKbGpwWU5menJQVmlNNU05YlM5dWU0MkVQS1ZTZE10bitDa3ltMHhKY3FzNExNcVVQc1JLSWJRS3RkTFkxZm14eWpxa0ZRZk5QNENWTlpDNUFRQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["mean_payout_amount"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"37567.26"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
+<pre class="r"><code>NA</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1888,7 +1948,7 @@ payouts_2006_2016 %&gt;%
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiR3JvdXAgMDQgTm90ZWJvb2siCm91dHB1dDogaHRtbF9ub3RlYm9vawphdXRob3JzOiBIYW5uYWggWmllZ2xlciwgVGluYXNoZSBDaGluZ2FyYW5kZSwgQW5kcsOpcyBSb2EKLS0tCgojIyNNSUxFU1RPTkUgMDIjIyMKCkNob3NlbiBwYXJhZ3JhcGg6CgrigJxCZXlvbmQgdGhlIG1hbW1vdGggY2FzZXMsIGEgcGlsZXVwIG9mIG90aGVyIGxhcmdlIHBheW91dHMgaGFzIHBhZGRlZCB0aGUgdGFiLCBhIFRpbWVzIGFuYWx5c2lzIG9mIGNpdHkgcGF5b3V0cyBmb3VuZC4gCgpXaGlsZSB0aGUgIyN0b3RhbCBudW1iZXIgb2YgcGF5b3V0cyBoYXMgZGlwcGVkIG92ZXIgdGltZSMjLCAKCnRoZSAjI2F2ZXJhZ2UgYW1vdW50IGhhcyBpbmNyZWFzZWQuIyMKCkxhc3QgYnVkZ2V0IHllYXIsIHRoZSBjaXR5IHBhaWQgb3V0IDMwIHNldHRsZW1lbnRzIG9mICQxIG1pbGxpb24gb3IgbW9yZSDigJQgZml2ZSB0aW1lcyBhcyBtYW55IGFzIGEgZGVjYWRlIGJlZm9yZS7igJ0KCi0tCkluZGl2aWR1YWwgRGF0YSBQb2ludHMgdG8gSUQ6CgotIFBheW91dHMgZGF0YQotLQpUaGUgU3RlcHM6CgotIExvYWQgdGhlIGRhdGEKCi0gQ3JlYXRlIGEgZGF0YWZyYW1lIHRvIGRlYWwgb25seSB3aXRoIHRoZSAyMDE3IHBheW91dHMKLSBDcmVhdGUgYSBkYXRhZnJhbWUgdG8gZGVhbCBvbmx5IHdpdGggdGhlIDIwMDYtMjAxNiBwYXlvdXRzCi0gRmluZCB0aGUgbnVtYmVyIG9mIHBheW91dHMgZnJvbSBlYWNoIHllYXIKICAtIFN1bSB0aGUgbnVtYmVyIChOT1QgVEhFIFRPVEFMLCBBTkRSRVMpIG9mIHBheW91dHMgcGVyIHllYXIKICAtIEZpbmQgdGhlIHBlcmNlbnQgY2hhbmdlIGZyb20gMjAwNiB0byAyMDE2CiAgCi0gRmluZCBhdmVyYWdlIGFtb3VudAogIC0gVXNlIHRoZSA8bWVhbj4gZnVuY3Rpb24gdG8gZmluZCB0aGF0IHRoZSBhdmVyYWdlIGhhcyBpbmNyZWFzZWQKICAKLSBGaW5kIHRoZSA+PSAkMSBtaWxsaW9uIHNldHRsZW1lbnRzICAgCiAgLSBGaWx0ZXIgdGhlIDIwMTcgcGF5b3V0cyBmb3Igc2V0dGxlbWVudHMgb3ZlciAkMSBtaWxsaW9uLCBzZWUgaG93IG1hbnkgdGhlcmUgYXJlCiAgLSBGaWx0ZXIgdGhlIDIwMDcgcGF5b3V0cyBmb3Igc2V0dGxlbWVudHMgb3ZlciAkMSBtaWxsaW9uLCBzZWUgaG93IG1hbnkgdGhlcmUgYXJlCiAgCgpgYGB7cn0KIyBUdXJuIG9mZiBzY2llbnRpZmljIG5vdGF0aW9uCm9wdGlvbnMoc2NpcGVuPTk5OSkKCiMgTG9hZCB0aGUgdGlkeXZlcnNlLgpsaWJyYXJ5KHRpZHl2ZXJzZSkKCmBgYAoKCgpgYGB7cn0KIyBXcml0ZSB0aGUgY29kZSB0byBsb2FkIHRoZSBDU1YgZmlsZSBoZXJlCgphbGxfcGF5b3V0c19kZWNhZGUgPC0gcmVhZF9jc3YoJ2RhdGEvMTBfeWVhcl9wYXlvdXRzLmNzdicsIHNraXA9MiwgY29sX25hbWVzID1jKCJmaXNjYWxfeWVhciIsICJjYXNlX25hbWUiLCAiY2xhaW1fY2FzZV9udW1iZXIiLCAiYW1vdW50IiwgImRlcGFydG1lbnQiLCAiY2FzZV90eXBlIikpCgp0b3RhbF95ZWFybHlfcGF5b3V0cyA8LSByZWFkX2NzdignZGF0YS90b3RhbF95ZWFybHlfcGF5b3V0cy5jc3YnKQoKYGBgCgoKCmBgYHtyfQojIFdyaXRlIHRoZSBjb2RlIHRvIGNyZWF0ZSBhIGRhdGFmcmFtZSBvZiBvbmx5IHRoZSBwYXlvdXRzIGZyb20gdGhlIHllYXIgMjAxNwoKcGF5b3V0c18yMDE3IDwtIGFsbF9wYXlvdXRzX2RlY2FkZSAlPiUKICBmaWx0ZXIoZmlzY2FsX3llYXIgPT0gIjIwMTciKQoKYGBgCgoKCmBgYHtyfQojIFdyaXRlIHRoZSBjb2RlIHRvIGNyZWF0ZSBhIGRhdGFmcmFtZSBvZiBwYXlvdXRzIGZyb20gMjAwNi0yMDE2IAoKcGF5b3V0c18yMDA2XzIwMTYgPC0gYWxsX3BheW91dHNfZGVjYWRlICU+JQogIAogIGZpbHRlcihmaXNjYWxfeWVhciA8ICIyMDE3IikKCmBgYAoKCgpgYGB7cn0KIyBTdW0gdGhlIHRvdGFsIG51bWJlciBvZiBwYXlvdXRzIGZyb20gMjAwNi0yMDE2IChzYXRpc2ZpZXMgImZpdmUgdGltZXMgYXMgbWFueSBhcyBhIGRlY2FkZSBiZWZvcmUiKQoKcGF5b3V0c18yMDA2XzIwMTYgJT4lCiAgc3VtbWFyaXNlKAogICAgY291bnQ9bigpKQoKYGBgCgoKCmBgYHtyfQojIERldGVybWluZSB0aGUgcGVyY2VudCBjaGFuZ2UgaW4gcGF5b3V0cyB0aHJvdWdoIHRoZSB3aG9sZSAxMC15ZWFyIHBlcmlvZCAoc2F0aXNmaWVzICJ3aGlsZSB0aGUgdG90YWwgbnVtYmVyIG9mIHBheW91dHMgaGFzIGRpcHBlZCBvdmVyIHRpbWUiKQoKeWVhcmx5X3BheW91dF9jb3VudCA8LSBhbGxfcGF5b3V0c19kZWNhZGUgJT4lCiAgZ3JvdXBfYnkoZmlzY2FsX3llYXIpICU+JQogIHN1bW1hcmlzZShjb3VudD1uKCkpICU+JQogIGFycmFuZ2UoZmlzY2FsX3llYXIpCiAgCnllYXJseV9wYXlvdXRfY291bnQgJT4lCiAgc3VtbWFyaXNlKAogIHRvdGFsX3BheW91dHNfMTBfeWVhcnMgPSBzdW0oY291bnQpCikKCnllYXJseV9wYXlvdXRfY291bnQgJT4lCiAgc3VtbWFyaXNlKAogIHBlcmNlbnRfY2hhbmdlID0gKCgxMzY5LTE0NjgpLzE4NzAzKSoxMDAKKQoKYGBgCgoKCmBgYHtyfQojIEZpbmQgdGhlIGF2ZXJhZ2UgYW1vdW50IG9mIHBheW91dHMgZnJvbSB0aGUgZGVjYWRlIDIwMDYtMjAxNiAoc2F0aXNmaWVzICJ0aGUgYXZlcmFnZSBhbW91bnQgaGFzIGluY3JlYXNlZCIpCgpgYGAKCgoKYGBge3J9CiMgRmlsdGVyIHRvIGZpbmQgdGhlIHRvdGFsIG51bWJlciBvZiBwYXlvdXRzIG92ZXIgJDEgbWlsbGlvbiBpbiAyMDE3LiAoc2F0aXNmaWVzICJMYXN0IGJ1ZGdldCB5ZWFyLCB0aGUgY2l0eSBwYWlkIG91dCAzMCBzZXR0bGVtZW50cyBvZiAkMSBtaWxsaW9uIG9yIG1vcmUiKQoKYGBgCgoKCmBgYHtyfQojIFN1bSB0aGUgdG90YWwgbnVtYmVyIG9mIHBheW91dHMgZ3JlYXRlciB0aGUgJDEgbWlsbGlvbiBmcm9tIDIwMDYtMjAxNiAoc2F0aXNmaWVzICJmaXZlIHRpbWVzIGFzIG1hbnkgYXMgYSBkZWNhZGUgYmVmb3JlIikKCmBgYA==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiR3JvdXAgMDQgTm90ZWJvb2siCm91dHB1dDogaHRtbF9ub3RlYm9vawphdXRob3JzOiBIYW5uYWggWmllZ2xlciwgVGluYXNoZSBDaGluZ2FyYW5kZSwgQW5kcsOpcyBSb2EKLS0tCgojIyNNSUxFU1RPTkUgMDIjIyMKCkNob3NlbiBwYXJhZ3JhcGg6CgrigJxCZXlvbmQgdGhlIG1hbW1vdGggY2FzZXMsIGEgcGlsZXVwIG9mIG90aGVyIGxhcmdlIHBheW91dHMgaGFzIHBhZGRlZCB0aGUgdGFiLCBhIFRpbWVzIGFuYWx5c2lzIG9mIGNpdHkgcGF5b3V0cyBmb3VuZC4gCgpXaGlsZSB0aGUgIyN0b3RhbCBudW1iZXIgb2YgcGF5b3V0cyBoYXMgZGlwcGVkIG92ZXIgdGltZSMjLCAKCnRoZSAjI2F2ZXJhZ2UgYW1vdW50IGhhcyBpbmNyZWFzZWQuIyMKCkxhc3QgYnVkZ2V0IHllYXIsIHRoZSBjaXR5IHBhaWQgb3V0IDMwIHNldHRsZW1lbnRzIG9mICQxIG1pbGxpb24gb3IgbW9yZSDigJQgZml2ZSB0aW1lcyBhcyBtYW55IGFzIGEgZGVjYWRlIGJlZm9yZS7igJ0KCi0tCkluZGl2aWR1YWwgRGF0YSBQb2ludHMgdG8gSUQ6CgotIFBheW91dHMgZGF0YQotLQpUaGUgU3RlcHM6CgotIExvYWQgdGhlIGRhdGEKCi0gQ3JlYXRlIGEgZGF0YWZyYW1lIHRvIGRlYWwgb25seSB3aXRoIHRoZSAyMDE3IHBheW91dHMKLSBDcmVhdGUgYSBkYXRhZnJhbWUgdG8gZGVhbCBvbmx5IHdpdGggdGhlIDIwMDYtMjAxNiBwYXlvdXRzCi0gRmluZCB0aGUgbnVtYmVyIG9mIHBheW91dHMgZnJvbSBlYWNoIHllYXIKICAtIFN1bSB0aGUgbnVtYmVyIChOT1QgVEhFIFRPVEFMLCBBTkRSRVMpIG9mIHBheW91dHMgcGVyIHllYXIKICAtIEZpbmQgdGhlIHBlcmNlbnQgY2hhbmdlIGZyb20gMjAwNiB0byAyMDE2CiAgCi0gRmluZCBhdmVyYWdlIGFtb3VudAogIC0gVXNlIHRoZSA8bWVhbj4gZnVuY3Rpb24gdG8gZmluZCB0aGF0IHRoZSBhdmVyYWdlIGhhcyBpbmNyZWFzZWQKICAKLSBGaW5kIHRoZSA+PSAkMSBtaWxsaW9uIHNldHRsZW1lbnRzICAgCiAgLSBGaWx0ZXIgdGhlIDIwMTcgcGF5b3V0cyBmb3Igc2V0dGxlbWVudHMgb3ZlciAkMSBtaWxsaW9uLCBzZWUgaG93IG1hbnkgdGhlcmUgYXJlCiAgLSBGaWx0ZXIgdGhlIDIwMDcgcGF5b3V0cyBmb3Igc2V0dGxlbWVudHMgb3ZlciAkMSBtaWxsaW9uLCBzZWUgaG93IG1hbnkgdGhlcmUgYXJlCiAgCgpgYGB7cn0KIyBUdXJuIG9mZiBzY2llbnRpZmljIG5vdGF0aW9uCm9wdGlvbnMoc2NpcGVuPTk5OSkKCiMgTG9hZCB0aGUgdGlkeXZlcnNlLgpsaWJyYXJ5KHRpZHl2ZXJzZSkKCmBgYAoKCgpgYGB7cn0KIyBXcml0ZSB0aGUgY29kZSB0byBsb2FkIHRoZSBDU1YgZmlsZSBoZXJlCgphbGxfcGF5b3V0c19kZWNhZGUgPC0gcmVhZF9jc3YoJ2RhdGEvY2xlYW5fMTBfeWVhcl9wYXlvdXRzLmNzdicsIHNraXA9MiwgY29sX25hbWVzID1jKCJmaXNjYWxfeWVhciIsICJjYXNlX25hbWUiLCAiY2xhaW1fY2FzZV9udW1iZXIiLCAiYW1vdW50IiwgImRlcGFydG1lbnQiLCAiY2FzZV90eXBlIikpCgp0b3RhbF95ZWFybHlfcGF5b3V0cyA8LSByZWFkX2NzdignZGF0YS9jbGVhbmVkX3RvdGFsX3llYXJseV9wYXlvdXRzLmNzdicpCgpgYGAKCgpgYGB7cn0KIyBXcml0ZSB0aGUgY29kZSB0byBjcmVhdGUgYSBkYXRhZnJhbWUgb2Ygb25seSB0aGUgcGF5b3V0cyBmcm9tIHRoZSB5ZWFyIDIwMTcKCnBheW91dHNfMjAxNyA8LSBhbGxfcGF5b3V0c19kZWNhZGUgJT4lCiAgZmlsdGVyKGZpc2NhbF95ZWFyID09ICIyMDE3IikKCmBgYAoKCgpgYGB7cn0KIyBXcml0ZSB0aGUgY29kZSB0byBjcmVhdGUgYSBkYXRhZnJhbWUgb2YgcGF5b3V0cyBmcm9tIDIwMDYtMjAxNiAKCnBheW91dHNfMjAwNl8yMDE2IDwtIGFsbF9wYXlvdXRzX2RlY2FkZSAlPiUKICBmaWx0ZXIoZmlzY2FsX3llYXIgPCAiMjAxNyIpIAoKYGBgCgoKCmBgYHtyfQojIFN1bSB0aGUgdG90YWwgbnVtYmVyIG9mIHBheW91dHMgZnJvbSAyMDA2LTIwMTYgKHNhdGlzZmllcyAiZml2ZSB0aW1lcyBhcyBtYW55IGFzIGEgZGVjYWRlIGJlZm9yZSIpCgpwYXlvdXRzXzIwMDZfMjAxNiAlPiUKICBzdW1tYXJpc2UoCiAgICBjb3VudD1uKCkpCgpgYGAKCgoKYGBge3J9CiMgRGV0ZXJtaW5lIHRoZSBwZXJjZW50IGNoYW5nZSBpbiBwYXlvdXRzIHRocm91Z2ggdGhlIHdob2xlIDEwLXllYXIgcGVyaW9kIChzYXRpc2ZpZXMgIndoaWxlIHRoZSB0b3RhbCBudW1iZXIgb2YgcGF5b3V0cyBoYXMgZGlwcGVkIG92ZXIgdGltZSIpCgp5ZWFybHlfcGF5b3V0X2NvdW50IDwtIGFsbF9wYXlvdXRzX2RlY2FkZSAlPiUKICBncm91cF9ieShmaXNjYWxfeWVhcikgJT4lCiAgc3VtbWFyaXNlKGNvdW50PW4oKSkgJT4lCiAgYXJyYW5nZShmaXNjYWxfeWVhcikKICAKeWVhcmx5X3BheW91dF9jb3VudCAlPiUKICBzdW1tYXJpc2UoCiAgdG90YWxfcGF5b3V0c18xMF95ZWFycyA9IHN1bShjb3VudCkKKQoKeWVhcmx5X3BheW91dF9jb3VudCAlPiUKICBzdW1tYXJpc2UoCiAgcGVyY2VudF9jaGFuZ2UgPSAoKDEzNjktMTQ2OCkvMTg3MDMpKjEwMAopCgpgYGAKCgoKYGBge3J9CiMgRmluZCB0aGUgYXZlcmFnZSBhbW91bnQgb2YgcGF5b3V0cyBmcm9tIHRoZSBkZWNhZGUgMjAwNi0yMDE2IChzYXRpc2ZpZXMgInRoZSBhdmVyYWdlIGFtb3VudCBoYXMgaW5jcmVhc2VkIikKCnBheW91dHNfMjAwNl8yMDE2ICU+JQogIHN1bW1hcmlzZSgKICAgIG1lYW5fcGF5b3V0X2Ftb3VudCA9IG1lYW4oYW1vdW50KQogICkKICAKYGBgCgoKCmBgYHtyfQojIEZpbHRlciB0byBmaW5kIHRoZSB0b3RhbCBudW1iZXIgb2YgcGF5b3V0cyBvdmVyICQxIG1pbGxpb24gaW4gMjAxNy4gKHNhdGlzZmllcyAiTGFzdCBidWRnZXQgeWVhciwgdGhlIGNpdHkgcGFpZCBvdXQgMzAgc2V0dGxlbWVudHMgb2YgJDEgbWlsbGlvbiBvciBtb3JlIikKCmBgYAoKCgpgYGB7cn0KIyBTdW0gdGhlIHRvdGFsIG51bWJlciBvZiBwYXlvdXRzIGdyZWF0ZXIgdGhlICQxIG1pbGxpb24gZnJvbSAyMDA2LTIwMTYgKHNhdGlzZmllcyAiZml2ZSB0aW1lcyBhcyBtYW55IGFzIGEgZGVjYWRlIGJlZm9yZSIpCgpgYGA=</div>
 
 
 

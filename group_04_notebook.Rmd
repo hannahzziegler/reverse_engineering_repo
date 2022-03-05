@@ -53,12 +53,11 @@ library(tidyverse)
 ```{r}
 # Write the code to load the CSV file here
 
-all_payouts_decade <- read_csv('data/10_year_payouts.csv', skip=2, col_names =c("fiscal_year", "case_name", "claim_case_number", "amount", "department", "case_type"))
+all_payouts_decade <- read_csv('data/clean_10_year_payouts.csv', skip=2, col_names =c("fiscal_year", "case_name", "claim_case_number", "amount", "department", "case_type"))
 
-total_yearly_payouts <- read_csv('data/total_yearly_payouts.csv')
+total_yearly_payouts <- read_csv('data/cleaned_total_yearly_payouts.csv')
 
 ```
-
 
 
 ```{r}
@@ -75,8 +74,7 @@ payouts_2017 <- all_payouts_decade %>%
 # Write the code to create a dataframe of payouts from 2006-2016 
 
 payouts_2006_2016 <- all_payouts_decade %>%
-  
-  filter(fiscal_year < "2017")
+  filter(fiscal_year < "2017") 
 
 ```
 
@@ -118,6 +116,11 @@ yearly_payout_count %>%
 ```{r}
 # Find the average amount of payouts from the decade 2006-2016 (satisfies "the average amount has increased")
 
+payouts_2006_2016 %>%
+  summarise(
+    mean_payout_amount = mean(amount)
+  )
+  
 ```
 
 
