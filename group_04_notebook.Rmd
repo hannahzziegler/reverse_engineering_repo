@@ -75,8 +75,8 @@ payouts_2017 <- all_payouts_decade %>%
 ```{r}
 # Write the code to create a dataframe of payouts from 2006-2016
 
-payouts_2017 <- all_payouts_decade %>%
-  filter(fiscal_year == "2017")
+payouts_2006_2016 <- all_payouts_decade %>%
+  filter(fiscal_year == "")
 
 ```
 
