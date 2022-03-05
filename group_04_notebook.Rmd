@@ -128,6 +128,9 @@ payouts_2006_2016 %>%
 ```{r}
 # Filter to find the total number of payouts over $1 million in 2017. (satisfies "Last budget year, the city paid out 30 settlements of $1 million or more")
 
+payouts_2017 %>%
+  filter(amount >= 1000000) 
+
 ```
 
 
