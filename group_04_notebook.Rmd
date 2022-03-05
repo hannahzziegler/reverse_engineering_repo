@@ -118,9 +118,25 @@ yearly_payout_count %>%
 
 payouts_2006_2016 %>%
   summarise(
-    mean_payout_amount = mean(amount)
+  total_mean_pay_amount = mean(amount)
+  )
+
+payouts_2006_2016 %>%
+  filter(fiscal_year == "2006") %>%
+  summarise(
+  mean_pay_amount_2006 = mean(amount)
+  )
+
+payouts_2006_2016 %>%
+  filter(fiscal_year == "2016") %>%
+  summarise(
+  mean_pay_amount_2016 = mean(amount)
   )
   
+yearly_payout_count %>%
+  summarise(
+  percent_change = ((94230.15-25345.32)/37567.26)*100)
+
 ```
 
 
