@@ -105,6 +105,12 @@ yearly_payout_count %>%
   summarise(
   total_payouts_10_years = sum(count)
 )
+
+yearly_payout_count %>%
+  summarise(
+  percent_change = ((1369-1468)/18703)*100
+)
+
 ```
 
 
