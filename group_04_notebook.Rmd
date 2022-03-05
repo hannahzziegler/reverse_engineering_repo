@@ -138,4 +138,8 @@ payouts_2017 %>%
 ```{r}
 # Sum the total number of payouts greater the $1 million from 2006-2016 (satisfies "five times as many as a decade before")
 
+payouts_2006_2016 %>%
+  filter(fiscal_year == "2007" & amount >= 1000000) %>%
+  select(fiscal_year, amount, case_name)
+
 ```
