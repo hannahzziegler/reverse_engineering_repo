@@ -1,45 +1,60 @@
+
 ---
 title: "Group 04 Notebook"
 output: html_notebook
 authors: Hannah Ziegler, Tinashe Chingarande, Andrés Roa
+output:
+  html_document:
+    theme: cerulean
+    highlight: pygments
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
 ---
 
-###MILESTONE 02###
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-Chosen paragraph:
+## Introduction 
 
-“Beyond the mammoth cases, a pileup of other large payouts has padded the tab, a Times analysis of city payouts found. 
+In this notebook, we are reverse engineering the story, [STORY NAME](STORY URL)
 
-While the ##total number of payouts has dipped over time##, 
+## Load libraries
 
-the ##average amount has increased.##
+Loading required libraries for this analysis.
 
-Last budget year, the city paid out 30 settlements of $1 million or more — five times as many as a decade before.”
+```{r echo=FALSE, message=FALSE}
 
---
-Individual Data Points to ID:
+```
 
-- Payouts data
---
-The Steps:
+## Load and Cleaning Data
 
-- Load the data
-
-- Create a dataframe to deal only with the 2017 payouts
-- Create a dataframe to deal only with the 2006-2016 payouts
-- Find the number of payouts from each year
-  - Sum the number (NOT THE TOTAL, ANDRES) of payouts per year
-  - Find the percent change from 2006 to 2016
-  
-- Find average amount
-  - Use the <mean> function to find that the average has increased
-  
-- Find the >= $1 million settlements   
-  - Filter the 2017 payouts for settlements over $1 million, see how many there are
-  - Filter the 2007 payouts for settlements over $1 million, see how many there are
-  
+In this section, describe the source of the data, write a basic data dictionary for data you are working with, and discuss any caveats or issues you discovered working with this data. 
 
 ```{r}
+# Load required data
+
+# Path to data should be loaded from folder "data" i.e. read_csv("data/name_of_data.csv")
+
+# Clean required data and prepare for analysis if needed. 
+
+
+```
+
+## Sentences to Engineer
+In this notebook, we are reverse engineering five sentences from the story.
+
+### Sentence 1
+
+* **Sentence text**: “Beyond the mammoth cases, a pileup of other large payouts has padded the tab, a Times analysis of city payouts found. While the total number of payouts has dipped over time, the average amount has increased. Last budget year, the city paid out 30 settlements of $1 million or more — five times as many as a decade before.”
+
+* **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+
+```{r}
+# Put code to reverse engineer sentence here
+
 # Turn off scientific notation
 options(scipen=999)
 
@@ -157,5 +172,58 @@ payouts_2017 %>%
 payouts_2006_2016 %>%
   filter(fiscal_year == "2007" & amount >= 1000000) %>%
   select(fiscal_year, amount, case_name)
+
+```
+
+# Display results of code below this codeblock
+
+```
+
+### Sentence 2
+
+* **Sentence text**: “Thousands of legal battles involving the Los Angeles Police Department, including a rash of recent settlements over police shootings and wrongful imprisonment, have added up to more than 40% of the total — a higher sum than any other city department, the analysis showed." 
+
+* **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+
+```{r}
+# Put code to reverse engineer sentence here
+
+# Display results of code below this codeblock
+
+```
+
+### Sentence 3
+
+* **Sentence text**: [Paste in sentence to engineer here]
+* **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+
+```{r}
+# Put code to reverse engineer sentence here
+
+# Display results of code below this codeblock
+
+```
+
+### Sentence 4
+
+* **Sentence text**: [Paste in sentence to engineer here]
+* **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+
+```{r}
+# Put code to reverse engineer sentence here
+
+# Display results of code below this codeblock
+
+```
+
+### Sentence 5
+
+* **Sentence text**: [Paste in sentence to engineer here]
+* **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+
+```{r}
+# Put code to reverse engineer sentence here
+
+# Display results of code below this codeblock
 
 ```
