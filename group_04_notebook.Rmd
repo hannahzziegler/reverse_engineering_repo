@@ -1,7 +1,6 @@
 
 ---
 title: "Group 04 Notebook"
-output: html_notebook
 authors: Hannah Ziegler, Tinashe Chingarande, Andrés Roa
 output:
   html_document:
@@ -26,7 +25,11 @@ In this notebook, we are reverse engineering the story, [STORY NAME](STORY URL)
 Loading required libraries for this analysis.
 
 ```{r echo=FALSE, message=FALSE}
+# Turn off scientific notation
+options(scipen=999)
 
+# Load the tidyverse.
+library(tidyverse)
 ```
 
 ## Load and Cleaning Data
@@ -37,6 +40,10 @@ In this section, describe the source of the data, write a basic data dictionary 
 # Load required data
 
 # Path to data should be loaded from folder "data" i.e. read_csv("data/name_of_data.csv")
+
+all_payouts_decade <- read_csv('data/clean_10_year_payouts.csv', skip=2, col_names =c("fiscal_year", "case_name", "claim_case_number", "amount", "department", "case_type"))
+
+total_yearly_payouts <- read_csv('data/cleaned_total_yearly_payouts.csv')
 
 # Clean required data and prepare for analysis if needed. 
 
@@ -55,35 +62,10 @@ In this notebook, we are reverse engineering five sentences from the story.
 ```{r}
 # Put code to reverse engineer sentence here
 
-# Turn off scientific notation
-options(scipen=999)
-
-# Load the tidyverse.
-library(tidyverse)
-
-```
-
-
-
-```{r}
-# Write the code to load the CSV file here
-
-all_payouts_decade <- read_csv('data/clean_10_year_payouts.csv', skip=2, col_names =c("fiscal_year", "case_name", "claim_case_number", "amount", "department", "case_type"))
-
-total_yearly_payouts <- read_csv('data/cleaned_total_yearly_payouts.csv')
-
-```
-
-
-```{r}
-# Write the code to create a dataframe of only the payouts from the year 2017
-
 payouts_2017 <- all_payouts_decade %>%
   filter(fiscal_year == "2017")
 
 ```
-
-
 
 ```{r}
 # Write the code to create a dataframe of payouts from 2006-2016 
@@ -93,8 +75,6 @@ payouts_2006_2016 <- all_payouts_decade %>%
 
 ```
 
-
-
 ```{r}
 # Sum the total number of payouts from 2006-2016 (satisfies "five times as many as a decade before")
 
@@ -103,8 +83,6 @@ payouts_2006_2016 %>%
     count=n())
 
 ```
-
-
 
 ```{r}
 # Determine the percent change in payouts through the whole 10-year period (satisfies "while the total number of payouts has dipped over time")
@@ -125,8 +103,6 @@ yearly_payout_count %>%
 )
 
 ```
-
-
 
 ```{r}
 # Find the average amount of payouts from the decade 2006-2016 (satisfies "the average amount has increased")
@@ -154,8 +130,6 @@ yearly_payout_count %>%
 
 ```
 
-
-
 ```{r}
 # Filter to find the total number of payouts over $1 million in 2017. (satisfies "Last budget year, the city paid out 30 settlements of $1 million or more")
 
@@ -163,8 +137,6 @@ payouts_2017 %>%
   filter(amount >= 1000000) 
 
 ```
-
-
 
 ```{r}
 # Sum the total number of payouts greater the $1 million from 2006-2016 (satisfies "five times as many as a decade before")
@@ -177,28 +149,44 @@ payouts_2006_2016 %>%
 
 # Display results of code below this codeblock
 
-```
-
 ### Sentence 2
 
 * **Sentence text**: “Thousands of legal battles involving the Los Angeles Police Department, including a rash of recent settlements over police shootings and wrongful imprisonment, have added up to more than 40% of the total — a higher sum than any other city department, the analysis showed." 
 
-* **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+* **Analysis summary**: We could not confirm that this figure was a higher sum than any other city department because we do not have the data from other cities to compare. We were able to confirm that police department payouts accounted for more than 40% of the total payouts across the decade. 
 
 ```{r}
-# Put code to reverse engineer sentence here
+# "Thousands of legal battles" (using payouts as a proxy)
 
-# Display results of code below this codeblock
+all_payouts_decade %>%
+  summarise(
+    count=n())
+
+# Total amount of payouts over 10 years = 880687820
+
+# Total Police Department Sum over 10 years
+
+all_payouts_decade %>%
+  filter(department == "Police Department") %>%
+  group_by(department) %>%
+  summarize(total = sum(amount))
+
+# Percentage of payouts that have been attributed to the police department across the last decade
+
+(369018871/880687820)*100
 
 ```
 
 ### Sentence 3
 
-* **Sentence text**: [Paste in sentence to engineer here]
+* **Sentence text**: That includes more than $24 million paid to two men who were freed after decades in prison, along with lawsuits over arrests, injuries, car crashes and alleged retaliation and discrimination against its own employees.”
+
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
 
 ```{r}
 # Put code to reverse engineer sentence here
+
+
 
 # Display results of code below this codeblock
 
