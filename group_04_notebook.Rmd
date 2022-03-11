@@ -181,7 +181,7 @@ all_payouts_decade %>%
 
 * **Sentence text**: That includes more than $24 million paid to two men who were freed after decades in prison, along with lawsuits over arrests, injuries, car crashes and alleged retaliation and discrimination against its own employees.”
 
-* **Analysis summary**: We researched another Los Angeles Times article that identified the two men that receive the payouts that totaled to 24 million. We filtered the data to narrow the police_department_payouts_2016 dataframe to only include payments about $7 million. Then, we filtered out the single other case that fit these parameters. Then, we summarized the amount of these two payouts to confirm that it was indeed $24 million. 
+* **Analysis summary**: We researched another Los Angeles Times article (https://www.latimes.com/local/lanow/la-me-ln-wrongful-convictions-20160119-story.html) that identified the two men that receive the payouts that totaled to 24 million. We filtered the data to narrow the police_department_payouts_2016 dataframe to only include payments about $7 million. Then, we filtered out the single other case that fit these parameters. Then, we summarized the amount of these two payouts to confirm that it was indeed $24 million. We considered the second half of this sentence to be based on observation from the reporter.
 
 ```{r}
 # Put code to reverse engineer sentence here
