@@ -181,12 +181,18 @@ all_payouts_decade %>%
 
 * **Sentence text**: That includes more than $24 million paid to two men who were freed after decades in prison, along with lawsuits over arrests, injuries, car crashes and alleged retaliation and discrimination against its own employees.”
 
-* **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+* **Analysis summary**: We researched another Los Angeles Times article that identified the two men that receive the payouts that totaled to 24 million. We filtered the data to narrow the police_department_payouts_2016 dataframe to only include payments about $7 million. Then, we filtered out the single other case that fit these parameters. Then, we summarized the amount of these two payouts to confirm that it was indeed $24 million. 
 
 ```{r}
 # Put code to reverse engineer sentence here
 
-
+police_department_payouts_2016 <- all_payouts_decade %>%
+  filter(department == "Police Department" & fiscal_year == 2016 & amount > 7000000)
+  
+  
+police_department_payouts_2016 %>%
+  filter(claim_case_number != "BC453870") %>%
+  summarize(total = sum(amount))
 
 # Display results of code below this codeblock
 
