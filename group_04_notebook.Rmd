@@ -41,7 +41,7 @@ In this section, describe the source of the data, write a basic data dictionary 
 
 # Path to data should be loaded from folder "data" i.e. read_csv("data/name_of_data.csv")
 
-all_payouts_decade <- read_csv('data/finalized_clean_10_year_payouts.csv', skip=2, col_names =c("fiscal_year", "case_name", "claim_case_number", "amount", "department", "case_type"))
+all_payouts_decade <- read_csv('data/finalized_clean_10_year_payouts.csv', skip=2, col_names =c("fiscal_year", "case_name", "claim_case_number", "amount", "department", "department_clean", "case_type"))
 
 total_yearly_payouts <- read_csv('data/cleaned_total_yearly_payouts.csv')
 
@@ -152,7 +152,7 @@ payouts_2006_2016 %>%
 # Put code to reverse engineer sentence here
 
 police_department_payouts_2016 <- all_payouts_decade %>%
-  filter(department == "Police Department" & fiscal_year == 2016 & amount > 7000000)
+  filter(department_clean == "Police Department" & fiscal_year == 2016 & amount > 7000000)
   
   
 police_department_payouts_2016 %>%
@@ -181,17 +181,17 @@ all_payouts_decade %>%
 # Total Police Department Sum over 10 years
 
 all_payouts_decade %>%
-  filter(department == "Police Department") %>%
-  group_by(department) %>%
+  filter(department_clean == "Police Department") %>%
+  group_by(department_clean) %>%
   summarize(total = sum(amount))
 
 # Percentage of payouts that have been attributed to the police department across the last decade
 
-((369018871+4733024)/880687820)*100
+(369018871)/880687820*100
 
 all_payouts_decade %>%
-  filter(department != "Police Department") %>%
-  group_by(department) %>%
+  filter(department_clean != "Police Department") %>%
+  group_by(department_clean) %>%
   summarize(total = sum(amount))
 
 ```
