@@ -167,7 +167,7 @@ police_department_payouts_2016 %>%
 
 * **Sentence text**: “Thousands of legal battles involving the Los Angeles Police Department, including a rash of recent settlements over police shootings and wrongful imprisonment, have added up to more than 40% of the total — a higher sum than any other city department, the analysis showed." 
 
-* **Analysis summary**: We could not confirm that this figure was a higher sum than any other city department because we do not have the data from other cities to compare. We were able to confirm that police department payouts accounted for more than 40% of the total payouts across the decade. 
+* **Analysis summary**: We confirmed that the department's total payouts were greater than any other department in the city by summarizing the amount of payouts that each other department had and calculating the percent of the total city payouts that these expenditures accounted for. We were able to confirm that police department payouts accounted for more than 40% of the total payouts across the decade. 
 
 ```{r}
 # "Thousands of legal battles" (using payouts as a proxy)
@@ -192,7 +192,9 @@ all_payouts_decade %>%
 all_payouts_decade %>%
   filter(department_clean != "Police Department") %>%
   group_by(department_clean) %>%
-  summarize(total = sum(amount))
+  summarize(total = sum(amount)) %>%
+  mutate(percent = total/880687820*100) %>%
+  arrange(desc(total))
 
 ```
 
