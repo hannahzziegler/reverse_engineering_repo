@@ -63,12 +63,12 @@ In this notebook, we are reverse engineering five sentences from the story.
 # Put code to reverse engineer sentence here
 
 payouts_2017 <- all_payouts_decade %>%
-  filter(fiscal_year == "2017")
+  filter(fiscal_year == 2017)
 
 # Write the code to create a dataframe of payouts from 2006-2016 
 
 payouts_2006_2016 <- all_payouts_decade %>%
-  filter(fiscal_year < "2017") 
+  filter(fiscal_year < 2017) 
 
 # Sum the total number of payouts from 2006-2016 (satisfies "five times as many as a decade before")
 
@@ -146,7 +146,7 @@ payouts_2006_2016 %>%
 
 * **Sentence text**: That includes more than $24 million paid to two men who were freed after decades in prison, along with lawsuits over arrests, injuries, car crashes and alleged retaliation and discrimination against its own employees.”
 
-* **Analysis summary**: We researched another Los Angeles Times article (https://www.latimes.com/local/lanow/la-me-ln-wrongful-convictions-20160119-story.html) that identified the two men that receive the payouts that totaled to 24 million. We filtered the data to narrow the police_department_payouts_2016 dataframe to only include payments about $7 million. Then, we filtered out the single other case that fit these parameters. Then, we summarized the amount of these two payouts to confirm that it was indeed $24 million. We considered the second half of this sentence to be based on observation from the reporter.
+* **Analysis summary**: We researched another Los Angeles Times article (https://www.latimes.com/local/lanow/la-me-ln-wrongful-convictions-20160119-story.html) that identified the two men that receive the payouts that totaled to 24 million. We filtered the data to narrow the police_department_payouts_2016 dataframe to only include payments about $7 million. Then, we filtered out the single other case that fit these parameters. Then, we summarized the amount of these two payouts to confirm that it was indeed $24 million. To find the second half of this sentence, we made a dataframe of police payouts by the type of case and summarized the number of cases present for each type, thus confirming that there have been lawsuits over arrests, injuries, car crashes and alleged discrimination against the department's own employees which have padded the tab for LAPD's legal payouts in the last decade.
 
 ```{r}
 # Put code to reverse engineer sentence here
@@ -158,6 +158,12 @@ police_department_payouts_2016 <- all_payouts_decade %>%
 police_department_payouts_2016 %>%
   filter(claim_case_number != "BC453870") %>%
   summarize(total = sum(amount))
+
+police_payouts <- all_payouts_decade %>%
+  group_by(case_type) %>%
+  filter(department_clean == "Police Department") %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
 
 # Display results of code below this codeblock
 
