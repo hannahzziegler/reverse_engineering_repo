@@ -146,7 +146,7 @@ payouts_2006_2016 %>%
 
 * **Sentence text**: That includes more than $24 million paid to two men who were freed after decades in prison, along with lawsuits over arrests, injuries, car crashes and alleged retaliation and discrimination against its own employees.”
 
-* **Analysis summary**: We researched another Los Angeles Times article (https://www.latimes.com/local/lanow/la-me-ln-wrongful-convictions-20160119-story.html) that identified the two men that receive the payouts that totaled to 24 million. We filtered the data to narrow the police_department_payouts_2016 dataframe to only include payments about $7 million. Then, we filtered out the single other case that fit these parameters. Then, we summarized the amount of these two payouts to confirm that it was indeed $24 million. To find the second half of this sentence, we made a dataframe of police payouts by the type of case and summarized the number of cases present for each type, thus confirming that there have been lawsuits over arrests, injuries, car crashes and alleged discrimination against the department's own employees which have padded the tab for LAPD's legal payouts in the last decade.
+* **Analysis summary**: We researched another Los Angeles Times article (https://www.latimes.com/local/lanow/la-me-ln-wrongful-convictions-20160119-story.html) that identified the two men that received the payouts that totalled to 24 million. We filtered the data to narrow the police_department_payouts_2016 dataframe to only include payments about $7 million. Then, we filtered out the single other case that fit these parameters. Then, we summarized the amount of these two payouts to confirm that it was indeed $24 million. To find the second half of this sentence, we made a dataframe of police payouts by the type of case and summarized the number of cases present for each type, thus confirming that there have been lawsuits over arrests, injuries, car crashes and alleged discrimination against the department's own employees which have padded the tab for LAPD's legal payouts in the last decade.
 
 ```{r}
 # Put code to reverse engineer sentence here
@@ -173,7 +173,7 @@ police_payouts <- all_payouts_decade %>%
 
 * **Sentence text**: “Thousands of legal battles involving the Los Angeles Police Department, including a rash of recent settlements over police shootings and wrongful imprisonment, have added up to more than 40% of the total — a higher sum than any other city department, the analysis showed." 
 
-* **Analysis summary**: We confirmed that the department's total payouts were greater than any other department in the city by summarizing the amount of payouts that each other department had and calculating the percent of the total city payouts that these expenditures accounted for. We were able to confirm that police department payouts accounted for more than 40% of the total payouts across the decade. 
+* **Analysis summary**: We confirmed that the department's total payouts were greater than any other department in the city by summarizing the amount of payouts that every other department had and calculating the percent of the total city payouts that these expenditures accounted for. We were able to confirm that police department payouts accounted for more than 40% of the total payouts across the decade. 
 
 ```{r}
 # "Thousands of legal battles" (using payouts as a proxy)
@@ -215,7 +215,7 @@ In the article we found about the other quoted $15 million payout (https://www.l
 
 Our filter for settlements of $9.5 million did not return any results. In the article linked about the $9.5 million payout, we found that the plaintiff's mom's name was Stacey Renee Larsen, who filed the suit for her daughter, who died in the accident.  (https://www.latimes.com/local/lanow/la-me-ln-wrongful-death-settlement-20170419-story.html) We used the same string detect and filter method as the other $15 million payout to find Larson within the all_payouts_decade dataframe that we had created. Larsen had two settlements in two different years that totalled about $5.8 million, not $9.5 million. 
 
-Our best guess as to why Leopold Victoria and Larsen did not get their full settlements is that the city had to pay the remaining amount in legal fees. The city may also be fulfilling these payments in subsequent years, but this seems less plausible. With that said, our data analysis was could not confirm the payout amount for two of these three settlements. 
+Our best guess as to why Leopold Victoria and Larsen did not get their full settlements is that the city had to pay the remaining amount in legal fees. The city may also be fulfilling these payments in subsequent years, but this seems less plausible. With that said, this data was not able to confirm the payout amount for two of these three settlements. 
 
 ```{r}
 
