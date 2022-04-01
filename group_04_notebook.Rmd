@@ -57,7 +57,7 @@ In this notebook, we are reverse engineering five sentences from the story.
 
 * **Sentence text**: “Beyond the mammoth cases, a pileup of other large payouts has padded the tab, a Times analysis of city payouts found. While the total number of payouts has dipped over time, the average amount has increased.”
 
-* **Analysis summary**: We found the number of payouts that were issues in fiscal year 2017. Then, we created a separate dataframe with all of the payouts from the decade before. We counted the number of payouts from the decade before. Then, we made a dataframe with the number of payouts from each year. After that, we calculated the percent change between 2007 and 2017. We also found the average amount of money paid in each payout for 2006 and 2016, then found the percent change. 
+* **Analysis summary**: First, we found the number of payouts that were issued in fiscal year 2017. Then, we created a separate dataframe with all of the payouts from the decade before. We counted the number of payouts from the decade before. Then, we made a dataframe with the number of payouts from each year. After that, we calculated the percent change between 2007 and 2017. We also found the average amount of money paid in each payout for 2006 and 2016, then found the percent change. 
 
 ```{r}
 # Put code to reverse engineer sentence here
@@ -124,7 +124,7 @@ yearly_payout_count %>%
 ### Sentence 2
 
 * **Sentence text**: "Last budget year, the city paid out 30 settlements of $1 million or more — five times as many as a decade before."
-* **Analysis summary**: We used our dataframe of all 2017 payouts to filter only for payout amounts that are greater than $1 million. Then, we found the sum of the total number of payouts greater than $1 million from the year 2007 to determine if the 30 payouts in 2017 were 5x greater than a decade before. 
+* **Analysis summary**: We used our dataframe of all 2017 payouts to filter only for payout amounts that are greater than $1 million. Then, we found the sum of the total number of payouts greater than $1 million from the year 2007 to determine if the 30 payouts in 2017 were 5x greater than a decade before. Our data analysis confirmed that there were 5x as many payouts over $1 million in 2017 than a decade before. 
 
 ```{r}
 # Put code to reverse engineer sentence here
