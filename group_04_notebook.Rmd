@@ -233,10 +233,17 @@ all_payouts_decade %>%
   filter(department_clean == "Department of Transportation") %>%
   filter(str_detect(case_name, 'Larsen'))
 
-# payouts_2018 <- all_payouts_decade %>%
-#  filter(fiscal_year == 2018)
+```
 
-# payouts_2017 %>%
-#  summarize(total = sum(amount))
+
+**A GIFT, just for fun, and also just in case**
+
+**Sentence text**: Last budget year, the total for all types of payouts reached $201 million — the highest on record — but city officials are unsure whether that is the largest amount because records go back only two decades.
+
+* **Analysis summary**: We summarized to find the sum of all the 2017 payouts. 
+```{r}
+
+payouts_2017 %>%
+  summarize(total = sum(amount))
 
 ```
