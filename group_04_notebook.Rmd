@@ -209,7 +209,11 @@ all_payouts_decade %>%
 
 * **Sentence text**: "In recent years, the city agreed to pay $15 million to end a legal battle over a man who was gravely injured while crossing Franklin Avenue in Hollywood, another $15 million to the family of two girls hit in a North Hollywood crosswalk and $9.5 million to the family of a teenage girl fatally struck by a taxi near Dockweiler State Beach."
 
-* **Analysis summary**: 
+* **Analysis summary**: First, we filtered all_payouts_decade data to find payouts that were equal to $15 million or equal to $9.5 million. This resulted in us only finding two matches for $15 million payouts. Each of the settlements listed in the article were hyperlinked to other stories that the LA Time had written. We used those stories to find the names associated with the two $15 million settlements we filtered for. Through some web sleuthing, we found that the one of the names of the two girls in the "$15 million to the family of two girls hit in a North Hollywood crosswalk" case was Angela  Killings-Rodriguez. (https://www.latimes.com/local/lanow/la-me-ln-lawsuit-north-hollywood-20151209-story.html) 
+
+In the article we found about the other quoted $15 million payout (https://www.latimes.com/local/lanow/la-me-ln-council-settlement-20171011-story.html), we found that the plaintiff's name was John Leopold Victoria. Then, we filtered and used string detect to find his name within the all_payouts_decade dataframe. We discovered that he only received $5 million instead of $15 million. 
+
+Our filter for settlements of $9.5 million did not return any results. In the article linked about the $9.5 million payout, we found that the plaintiff's mom's name was Stacey Renee Larsen, who filed the suit for her daughter, who died in the accident.  (https://www.latimes.com/local/lanow/la-me-ln-wrongful-death-settlement-20170419-story.html) We used the same string detect and filter method as the other $15 million payout to find Larson within the all_payouts_decade dataframe that we had created. Larsen had two settlements in two different years that totalled about $5.8 million, not $9.5 million. 
 
 ```{r}
 
