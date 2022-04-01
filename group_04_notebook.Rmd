@@ -101,13 +101,13 @@ payouts_2006_2016 %>%
   )
 
 payouts_2006_2016 %>%
-  filter(fiscal_year == "2006") %>%
+  filter(fiscal_year == 2006) %>%
   summarise(
   mean_pay_amount_2006 = mean(amount)
   )
 
 payouts_2006_2016 %>%
-  filter(fiscal_year == "2016") %>%
+  filter(fiscal_year == 2016) %>%
   summarise(
   mean_pay_amount_2016 = mean(amount)
   )
@@ -137,7 +137,7 @@ payouts_2017 %>%
 # Sum the total number of payouts greater the $1 million from 2006-2016 (satisfies "five times as many as a decade before")
 
 payouts_2006_2016 %>%
-  filter(fiscal_year == "2007" & amount >= 1000000) %>%
+  filter(fiscal_year == 2007 & amount >= 1000000) %>%
   select(fiscal_year, amount, case_name)
 
 ```
@@ -210,7 +210,7 @@ all_payouts_decade %>%
 
 ### Sentence 5
 
-* **Sentence text**: ""
+* **Sentence text**: "Legal payouts for this budget year are estimated to total around $109 million. Although the city is spending less on payouts this year than last, it also has been saddling future budgets with payout costs, committing up to $16 million next budget year to help pay off settlements that it already has approved."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
 
 ```{r}
