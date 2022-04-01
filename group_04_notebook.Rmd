@@ -204,18 +204,20 @@ all_payouts_decade %>%
 
 ```
 
-# Display results of code below this codeblock
-
-```
 
 ### Sentence 5
 
-* **Sentence text**: "Legal payouts for this budget year are estimated to total around $109 million. Although the city is spending less on payouts this year than last, it also has been saddling future budgets with payout costs, committing up to $16 million next budget year to help pay off settlements that it already has approved."
-* **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+* **Sentence text**: "The annual total is expected to drop sharply in the budget year that ends Saturday, but remains much higher than just a few years ago."
+
+
+* **Analysis summary**: 
 
 ```{r}
-# Put code to reverse engineer sentence here
 
-# Display results of code below this codeblock
+payouts_2018 <- all_payouts_decade %>%
+  filter(fiscal_year == 2018)
+
+# payouts_2017 %>%
+#  summarize(total = sum(amount))
 
 ```
