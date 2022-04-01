@@ -215,6 +215,8 @@ In the article we found about the other quoted $15 million payout (https://www.l
 
 Our filter for settlements of $9.5 million did not return any results. In the article linked about the $9.5 million payout, we found that the plaintiff's mom's name was Stacey Renee Larsen, who filed the suit for her daughter, who died in the accident.  (https://www.latimes.com/local/lanow/la-me-ln-wrongful-death-settlement-20170419-story.html) We used the same string detect and filter method as the other $15 million payout to find Larson within the all_payouts_decade dataframe that we had created. Larsen had two settlements in two different years that totalled about $5.8 million, not $9.5 million. 
 
+Our best guess as to why Leopold Victoria and Larsen did not get their full settlements is that the city had to pay the rest of the amount in legal fees. We assume that the city may be fulfilling these payments in subsequent years. Our data analysis was could not confirm the amount for two of these three settlements. 
+
 ```{r}
 
 all_payouts_decade %>%
