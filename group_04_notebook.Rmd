@@ -207,15 +207,28 @@ all_payouts_decade %>%
 
 ### Sentence 5
 
-* **Sentence text**: "The annual total is expected to drop sharply in the budget year that ends Saturday, but remains much higher than just a few years ago."
-
+* **Sentence text**: "In recent years, the city agreed to pay $15 million to end a legal battle over a man who was gravely injured while crossing Franklin Avenue in Hollywood, another $15 million to the family of two girls hit in a North Hollywood crosswalk and $9.5 million to the family of a teenage girl fatally struck by a taxi near Dockweiler State Beach."
 
 * **Analysis summary**: 
 
 ```{r}
 
-payouts_2018 <- all_payouts_decade %>%
-  filter(fiscal_year == 2018)
+all_payouts_decade %>%
+  filter(amount == 15000000)
+
+all_payouts_decade %>%
+  filter(amount == 9500000)
+
+all_payouts_decade %>%
+  filter(department_clean == "Department of Transportation") %>%
+  filter(str_detect(case_name, 'Leopold'))
+
+all_payouts_decade %>%
+  filter(department_clean == "Department of Transportation") %>%
+  filter(str_detect(case_name, 'Larsen'))
+
+# payouts_2018 <- all_payouts_decade %>%
+#  filter(fiscal_year == 2018)
 
 # payouts_2017 %>%
 #  summarize(total = sum(amount))
